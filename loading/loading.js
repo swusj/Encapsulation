@@ -1,6 +1,6 @@
 /**
  * 让ajax操作前开始loading，返回结果后，一通操作后结束loading（相当于最后加了个finally(()=>{结束loading]})）
- * @param {function} promise
+ * @param {function} promise 将ajax操作以及后续结果处理放在函数中传入
  *
  */
 function viaLoaing(promise) {
@@ -9,9 +9,11 @@ function viaLoaing(promise) {
 	// .then() .catch() .finally() 都会返回新的promise对象，因此可以这样搞
 	promise().then(() => {
 		// 结束loading
-		console.log("loading done");
+		console.log("loading done！");
 	});
 }
+
+// 用例
 
 function myAjax() {
 	return new Promise((resolve, reject) => {
